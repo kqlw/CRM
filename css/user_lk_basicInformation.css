@@ -1,0 +1,263 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+
+.status
+{
+    border-radius: 100%;
+    background-color: #6DD401;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    margin: 0 10px;
+}
+
+/* ================ Шапка ================= */
+
+.header
+{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 12%;
+    font-size: 25px;
+    border-bottom: 3px solid black;
+}
+
+.header_navigation
+{
+    display: flex;
+    width: 600px;
+    justify-content: space-between;
+}
+.header_navigation_btn
+{
+    display: flex;
+
+}
+
+
+.header_navigation_btn:hover
+{
+    cursor: pointer;
+
+}
+
+.header_exit
+{
+    font-size: 25px;
+    display: flex;
+
+    background-color: white;
+    color: red;
+}
+
+.header_exit:hover
+{
+    cursor: pointer;
+}
+
+/* ================ Основная информация ================= */
+.basicInformation
+{
+    /* display: none; */
+}
+
+
+.header_txt
+{
+    font-size: 30px;
+    text-decoration: underline;
+    display: flex;
+    margin-bottom: 20px;
+}
+.txt
+{
+    font-size: 25px;
+    display: flex;
+
+}
+.txt_bold
+{
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+
+
+.inforamation
+{
+    display: flex;
+    justify-content: space-between;
+
+    margin: 50px 10%;
+
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px 50px;
+}
+
+.container_inforamation
+{
+    margin-bottom: 50px;
+}
+
+
+/* =========== Номер телефона ============== */
+.container_phoneNumber
+{
+    margin: 25px 10%;
+    display: flex;
+    align-items:center;
+}
+
+.phoneNumber
+{
+    font-size: 45px;
+    display: flex;
+}
+
+
+
+/* =========== Тариф ============== */
+.inforamation_header 
+{
+    font-size: 30px;  
+    display: flex; 
+    margin-left: 12%;
+}
+#rate_name
+{
+    background-color: white;
+    text-decoration: underline;
+    font-size: 30px;
+    display: flex;
+    margin-left:  10px;
+}
+
+#rate_name:hover
+{
+    cursor: pointer;    
+}
+
+
+.information
+{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 25px 50px;
+    margin: 10px 10%;
+}
+
+.information_block
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.rate_name
+{
+    margin-left: 12%;
+    display: flex;
+    align-items:center;
+}
+
+#rate_status
+{
+    width: 25px;
+    height: 25px;
+}
+
+
+
+.btn_TopUpBalance
+{
+    color: white;
+    background-color: #6DD401;
+
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.btn_TopUpBalance:hover
+{
+    cursor: pointer;
+}
+
+
+/* ================ таблица ================= */
+
+.table
+{
+    display: flex;
+    border: 3px solid black;
+    flex-direction: column;
+    margin: 0 10%;
+}
+
+.table_name
+{
+    font-size: 30px;  
+    display: flex; 
+    margin-left: 12%;
+    margin-bottom: 20px;
+}
+
+.table_row
+{
+    display: flex;
+    border: 1px solid black;
+    width: 100%;
+    /* justify-content: space-between; */
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+}
+
+.table_column_header
+{
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.table_column
+{
+    display: flex;
+    border: 2px solid black;
+    padding: 20px 0 ; 
+    font-size: 20px;
+    /* text-align: center; */
+    padding-left: 20px;
+}
+
+.column_status
+{
+    width: 10%;
+}
+
+.column_name
+{
+    width: 65%;
+}
+
+.column_price
+{
+    width: 25%;
+}
+
+
+.service_status
+{
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    background-color: greenyellow;
+}
+

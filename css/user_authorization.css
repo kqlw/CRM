@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+
+.UserAuthorization
+{
+    border: 1px solid black;
+    border-radius: 20px;
+    width: 500px; 
+    height: 230px;
+    padding: 25px 50px;
+
+    
+    margin: 150px auto;
+    /* 
+    margin-left: auto;
+    margin-right: auto; */
+}
+
+
+
+.UserAuthorization__txt
+{
+    font-size: 25px;
+    margin-bottom: 5px;
+    
+}
+
+
+.UserAuthorization__input
+{
+    border: 1px solid black;
+    border-radius: 11px;
+    width: 500px;
+    height: 50px;
+    margin-bottom: 15px;
+
+    font-size: 25px;
+    padding: 15px;
+}
+
+.UserAuthorization__bottomConatiner
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 500px;
+}
+
+.UserAuthorization__btn
+{
+    font-size: 19px;
+    color: white;
+    background-color: black;
+    
+    padding: 10px 50px;
+    border-radius: 11px;
+
+}
+
+.UserAuthorization__GetPassword
+{
+    background-color: white;
+    color: #0191FF;
+    font-size: 20px;
+    text-decoration: underline;
+}
+
+.UserAuthorization__GetPassword, .UserAuthorization__btn:hover
+{
+    cursor: pointer;
+}

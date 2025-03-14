@@ -1,0 +1,25 @@
+.inputTextArea
+{
+    width: 650px;
+    height: 200px;
+    border: 1px solid black;
+    resize: none;
+}
+
+.container_communicationMethod
+{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.inputArea
+{
+    font-size: 24px;
+    display: flex;
+    height: 25px;
+    border: 1px solid black;
+    margin: 0 10px;
+    
+}

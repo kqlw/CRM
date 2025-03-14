@@ -1,0 +1,221 @@
+<html>
+<head>
+    <title>Личный кабинет</title>
+    <link rel="stylesheet" href="C:\Users\я\Desktop\Учёба\2024\зимняя сессия\web\css\user_lk_basicInformation.css">
+    <link rel="stylesheet" href="C:\Users\я\Desktop\Учёба\2024\зимняя сессия\web\css\user_lk_finance.css">
+    
+    <link rel="stylesheet" href="C:\Users\я\Desktop\Учёба\2024\зимняя сессия\web\css\user_lk_help.css">
+
+
+
+</head>
+
+<body>
+    <div class="header">
+
+        <div class="header_navigation">
+            <input type="radio" name="navigation" class="header_navigation_btn">Основная информация</input >
+            <input type="radio" name="navigation" class="header_navigation_btn">Финансы</input >
+            <input type="radio" name="navigation" class="header_navigation_btn">Помощь</input >
+        </div>
+
+        <button class="header_exit">Выйти</button>
+
+    </div>
+
+
+
+    <div class="basicInformation">
+
+        <div class="container_phoneNumber" >
+            <div class="phoneNumber">Номер телефона: +79008881441</div>
+            <div class="status"></div>
+        </div>
+
+        <div class="container_inforamation">
+            <div class="inforamation_header">Личные данные</div>
+
+            <div class="information">
+                <div class="information_block">
+                    <div class="header_txt">ФИО</div>
+
+                    <div class="txt">Фамилия: Паевский</div>
+                    <div class="txt">Имя: Андрей</div>
+                    <div class="txt">Отчество: Паевский</div>
+                    <div class="txt">Дата рождения: 14.03.2003</div>
+
+
+                    
+                    
+                </div>
+                
+                <div class="information_block">
+                    <div class="header_txt">Паспорт</div>
+                    <div class="txt">Серия: 5514</div>
+                    <div class="txt">Номер: 748371</div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="container_inforamation">
+            <div class="inforamation_header">Тариф:  
+                <button id="rate_name" >Мой онлайн</button>
+                <div class="status" id="rate_status"></div>
+            </div>
+            
+            <div class="information">
+
+                <div class="information_block">                
+                    <div class="header_txt">Праметры тарифа</div>
+
+                    <div class="txt">Минуты: т2 безлимит, 600 по РФ</div>
+                    <div class="txt">SMS: 20</div>
+                    <div class="txt">Интернет: 30 Гб</div>
+
+                    <div class="txt txt_bold">Стоимость: 600р</div>
+    
+                </div>
+        
+                <div class="information_block">
+                    <div class="header_txt">Остатки пакетов по тарифу</div>
+    
+                    <div class="txt">Минуты: 600</div>
+                    <div class="txt">SMS: 20</div>
+                    <div class="txt">Интернет: 30 Гб</div>
+
+                    <div class="txt txt_bold">Баланс: 250р</div>
+                    <button class="btn_TopUpBalance" >Пополнить</button>
+                </div>
+            </div>
+        </div>
+
+<!-- услуги -->
+
+        <div class="table_container">
+            <div class="table_name">Услуги</div>
+
+            <div class="table">
+                <div class="table_row">
+                    <div class="table_column table_column_header column_status">Статус</div>
+                    <div class="table_column table_column_header column_name">Наимменование</div>
+                    <div class="table_column table_column_header column_price">Стоимость</div>
+                </div>
+    
+                <div class="table_row">
+                    <div class="table_column column_status"><button class="service_status"></button></div>
+                    <div class="table_column column_name">Дополнительный пакет 20 SMS</div>
+                    <div class="table_column column_price">50р/мес</div>
+                </div>
+    
+                <div class="table_row">
+                    <div class="table_column column_status"><button class="service_status"></button></div>
+                    <div class="table_column column_name">Телефония</div>
+                    <div class="table_column column_price">0р/мес</div>
+                </div>
+                
+                <div class="table_row">
+                    <div class="table_column column_status"><button class="service_status"></button></div>
+                    <div class="table_column column_name">SMS</div>
+                    <div class="table_column column_price">0р/мес</div>
+                </div>
+    
+                <div class="table_row">
+                    <div class="table_column column_status"><button class="service_status"></button></div>
+                    <div class="table_column column_name">Антиспам</div>
+                    <div class="table_column column_price">0р/мес</div>
+                </div>
+    
+                <div class="table_row">
+                    <div class="table_column column_status"><button class="service_status"></button></div>
+                    <div class="table_column column_name">Тариф "Мой онлайн"</div>
+                    <div class="table_column column_price">600р/мес</div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+<!-- ================================ Финансы ================================ -->
+
+    <div class="finance">
+        <div class="table_container">
+            <div class="table_name">Детализация</div>
+
+            <div class="table">
+                <div class="table_row">
+                    <div class="table_column table_column_header column_date">Дата</div>
+                    <div class="table_column table_column_header column_rateName">Наимменование</div>
+                    <div class="table_column table_column_header column_payment">Сумма</div>
+                </div>
+    
+                <div class="table_row">
+                    <div class="table_column column_date">12.03.2025 16:40</div>
+                    <div class="table_column column_rateName">Дополнительный пакет 20 SMS</div>
+                    <div class="table_column column_payment">-50р</div>
+                </div>
+    
+                <div class="table_row">
+                    <div class="table_column column_date">11.03.2025 12:45</button></div>
+                    <div class="table_column column_rateName">Тариф "Мой онлайн"</div>
+                    <div class="table_column column_payment">-600р</div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+<!-- ================================ Поддержка ================================ -->
+
+    <div class="help">  
+
+        <div class="container_inforamation">
+            <div class="inforamation_header">Помощь</div>
+
+            <div class="information">
+                <div class="information_block">
+                    <div class="header_txt">Опишите свою проблему</div>
+                    
+                    <textarea name="" class="inputTextArea"></textarea>
+               
+                </div>
+                
+                <div class="information_block">
+                    <div class="header_txt">Как с вами связаться?</div>
+                    
+                    <div class="container_communicationMethod"> 
+                        <input type="radio" name="communicationMethod" class="inputArea">
+                        <div class="txt">Звонок</div>
+                        <input type="text" class="inputArea">
+                    </div>
+
+                    <div class="container_communicationMethod"> 
+                        <input type="radio" name="communicationMethod" class="inputArea">
+                        <div class="txt">SMS</div>
+                        <input type="text" class="inputArea">
+                    </div>
+
+                    <div class="container_communicationMethod"> 
+                        <input type="radio" name="communicationMethod" class="inputArea">
+                        <div class="txt">email</div>
+                        <input type="text" class="inputArea">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
