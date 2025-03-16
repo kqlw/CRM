@@ -1,3 +1,9 @@
+.help
+{
+    /* display: none; */
+}
+
+
 .inputTextArea
 {
     width: 650px;
@@ -23,3 +29,15 @@
     margin: 0 10px;
     
 }
+
+.btn_submitForm
+{
+    background-color: #0F97FF;
+    padding: 15px 30px;
+    margin-top: 40px;
+    border-radius: 10px;
+    font-size: 25px;
+    color: white;
+}
+
+.btn_submitForm:hover {cursor: pointer;}

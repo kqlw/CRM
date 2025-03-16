@@ -1,63 +1,4 @@
-*{
-    margin: 0;
-    padding: 0;
-    border: 0;
-}
 
-
-.status
-{
-    border-radius: 100%;
-    background-color: #6DD401;
-    width: 25px;
-    height: 25px;
-    display: flex;
-    margin: 0 10px;
-}
-
-/* ================ Шапка ================= */
-
-.header
-{
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 12%;
-    font-size: 25px;
-    border-bottom: 3px solid black;
-}
-
-.header_navigation
-{
-    display: flex;
-    width: 600px;
-    justify-content: space-between;
-}
-.header_navigation_btn
-{
-    display: flex;
-
-}
-
-
-.header_navigation_btn:hover
-{
-    cursor: pointer;
-
-}
-
-.header_exit
-{
-    font-size: 25px;
-    display: flex;
-
-    background-color: white;
-    color: red;
-}
-
-.header_exit:hover
-{
-    cursor: pointer;
-}
 
 /* ================ Основная информация ================= */
 .basicInformation
@@ -127,6 +68,7 @@
     font-size: 30px;  
     display: flex; 
     margin-left: 12%;
+    margin-top: 20px;
 }
 #rate_name
 {
@@ -194,70 +136,5 @@
 
 /* ================ таблица ================= */
 
-.table
-{
-    display: flex;
-    border: 3px solid black;
-    flex-direction: column;
-    margin: 0 10%;
-}
 
-.table_name
-{
-    font-size: 30px;  
-    display: flex; 
-    margin-left: 12%;
-    margin-bottom: 20px;
-}
-
-.table_row
-{
-    display: flex;
-    border: 1px solid black;
-    width: 100%;
-    /* justify-content: space-between; */
-    flex-direction: row;
-    flex-wrap: nowrap;
-
-}
-
-.table_column_header
-{
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.table_column
-{
-    display: flex;
-    border: 2px solid black;
-    padding: 20px 0 ; 
-    font-size: 20px;
-    /* text-align: center; */
-    padding-left: 20px;
-}
-
-.column_status
-{
-    width: 10%;
-}
-
-.column_name
-{
-    width: 65%;
-}
-
-.column_price
-{
-    width: 25%;
-}
-
-
-.service_status
-{
-    width: 25px;
-    height: 25px;
-    border-radius: 100%;
-    background-color: greenyellow;
-}
 

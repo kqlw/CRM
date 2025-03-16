@@ -6,6 +6,7 @@
     
     <link rel="stylesheet" href="C:\Users\я\Desktop\Учёба\2024\зимняя сессия\web\css\user_lk_help.css">
 
+    <link rel="stylesheet" href="C:\Users\я\Desktop\Учёба\2024\зимняя сессия\web\css\main.css">
 
 
 </head>
@@ -95,47 +96,33 @@
 
 <!-- услуги -->
 
-        <div class="table_container">
-            <div class="table_name">Услуги</div>
+    <div class="table_header">Услуги</div>
+    <table class="table">
+        <tr>
+            <th class="table_head">Статус</th>
+            <th class="table_head">Услуга</th>
+            <th class="table_head">Стоимость</th>
+        </tr>
 
-            <div class="table">
-                <div class="table_row">
-                    <div class="table_column table_column_header column_status">Статус</div>
-                    <div class="table_column table_column_header column_name">Наимменование</div>
-                    <div class="table_column table_column_header column_price">Стоимость</div>
-                </div>
-    
-                <div class="table_row">
-                    <div class="table_column column_status"><button class="service_status"></button></div>
-                    <div class="table_column column_name">Дополнительный пакет 20 SMS</div>
-                    <div class="table_column column_price">50р/мес</div>
-                </div>
-    
-                <div class="table_row">
-                    <div class="table_column column_status"><button class="service_status"></button></div>
-                    <div class="table_column column_name">Телефония</div>
-                    <div class="table_column column_price">0р/мес</div>
-                </div>
-                
-                <div class="table_row">
-                    <div class="table_column column_status"><button class="service_status"></button></div>
-                    <div class="table_column column_name">SMS</div>
-                    <div class="table_column column_price">0р/мес</div>
-                </div>
-    
-                <div class="table_row">
-                    <div class="table_column column_status"><button class="service_status"></button></div>
-                    <div class="table_column column_name">Антиспам</div>
-                    <div class="table_column column_price">0р/мес</div>
-                </div>
-    
-                <div class="table_row">
-                    <div class="table_column column_status"><button class="service_status"></button></div>
-                    <div class="table_column column_name">Тариф "Мой онлайн"</div>
-                    <div class="table_column column_price">600р/мес</div>
-                </div>
-            </div>
-        </div>
+        <tr>
+            <td><button class="status"></button></td>
+            <td>Телефония</td>
+            <td>0р</td>
+        </tr>
+
+        <tr>
+            <td class="table_cell"><button class="status"></button></td>
+            <td>SMS</td>
+            <td>0р</td>
+        </tr>
+
+        <tr>
+            <td><button class="status"></button></td>
+            <td>Траиф "Мой онлайн"</td>
+            <td>0р</td>
+        </tr>
+
+    </table>    
 
 
     </div>
@@ -143,29 +130,33 @@
 <!-- ================================ Финансы ================================ -->
 
     <div class="finance">
-        <div class="table_container">
-            <div class="table_name">Детализация</div>
+        <div class="table_header">Детализация</div>
+        <table class="table">
+            <tr>
+                <th class="table_head">Дата</th>
+                <th class="table_head">Услуга</th>
+                <th class="table_head">Стоимость</th>
+            </tr>
+    
+            <tr>
+                <td>14.03.2025 04:21</td>
+                <td>Тариф "Мой онлайн"</td>
+                <td>600р</td>
+            </tr>
+    
+            <tr>
+                <td>12.03.2025</td>
+                <td>Доп. пакет 20Гб</td>
+                <td>400р</td>
+            </tr>
 
-            <div class="table">
-                <div class="table_row">
-                    <div class="table_column table_column_header column_date">Дата</div>
-                    <div class="table_column table_column_header column_rateName">Наимменование</div>
-                    <div class="table_column table_column_header column_payment">Сумма</div>
-                </div>
+            <tr>
+                <td>12.03.2025</td>
+                <td>Доп. пакет 20Гб</td>
+                <td>400р</td>
+            </tr>
     
-                <div class="table_row">
-                    <div class="table_column column_date">12.03.2025 16:40</div>
-                    <div class="table_column column_rateName">Дополнительный пакет 20 SMS</div>
-                    <div class="table_column column_payment">-50р</div>
-                </div>
-    
-                <div class="table_row">
-                    <div class="table_column column_date">11.03.2025 12:45</button></div>
-                    <div class="table_column column_rateName">Тариф "Мой онлайн"</div>
-                    <div class="table_column column_payment">-600р</div>
-                </div>
-            </div>
-        </div>
+        </table> 
 
 
     </div>
@@ -206,13 +197,49 @@
                         <div class="txt">email</div>
                         <input type="text" class="inputArea">
                     </div>
-
+                    
+                    <button class="btn_submitForm">Отправить</button>
                 </div>
 
             </div>
 
 
         </div>
+
+
+        <div class="table_header">Мои заявки</div>
+        <table class="table">
+            <tr>
+                <th class="table_head">ID</th>
+                <th class="table_head">Дата начала</th>
+                <th class="table_head">Дата окончания</th>
+                <th class="table_head">Статус</th>
+            </tr>
+    
+            <tr>
+                <td>ТТ465123</td>
+                <td>14.03.2025 04:21</td>
+                <td>16.03.2025 04:21</td>
+                <td>В работе</td>
+
+            </tr>
+
+            <tr>
+                <td>ТТ465123</td>
+                <td>14.03.2025 04:21</td>
+                <td>16.03.2025 04:21</td>
+                <td>В работе</td>
+
+            </tr>
+            <tr>
+                <td>ТТ465123</td>
+                <td>14.03.2025 04:21</td>
+                <td>16.03.2025 04:21</td>
+                <td>В работе</td>
+
+            </tr>
+    
+        </table>
 
     </div>
 
