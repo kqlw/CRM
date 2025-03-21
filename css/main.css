@@ -35,6 +35,10 @@
 .header_navigation_btn
 {
     display: flex;
+    /* padding: 20px 12%; */
+    font-size: 25px;
+    /* border-bottom: 3px solid black; */
+    background-color: white;
 
 }
 

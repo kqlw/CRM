@@ -1,8 +1,8 @@
-
+{% load static %}
 <html>
 <head>
     <title>Вход</title>
-    <link rel="stylesheet" href="C:\Users\я\Desktop\Учёба\2024\зимняя сессия\web\css\user_authorization.css">
+    <link rel="stylesheet" href="{% static 'user_authorization.css' %}">
 </head>
 
 <body>
@@ -10,20 +10,26 @@
     <div class="UserAuthorization">
         
         <h2 class="UserAuthorization__txt">Введите номер телефона:</h2>
-        <input type="tel" class="UserAuthorization__input">
-
-        <h2 class="UserAuthorization__txt">Введите пароль из SMS:</h2>
-        <input type="password" class="UserAuthorization__input">
-        
-        <div class="UserAuthorization__bottomConatiner">
-            <button class="UserAuthorization__GetPassword" >Запросить пароль</button>
-            <button class="UserAuthorization__btn">войти</button>
-        </div>
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="tel" id="phoneNumber" class="UserAuthorization__input" value="+7" maxlength="12" minlength="12" name="phoneNumber">
+            
+            <h2 class="UserAuthorization__txt">Введите пароль из SMS:</h2>
+            <input type="password" class="UserAuthorization__input" id="inputArea_password">
+            
+            <div class="UserAuthorization__bottomConatiner">
+                <button class="UserAuthorization__GetPassword" id="btn_GetPassword">Запросить пароль</button>
+                <button class="UserAuthorization__btn" id="btn_authorization">войти</button>
+            </div>
+            
+        </form>
         
 
     </div>
 
 
+    
+    <script src="{% static 'userAuthorization.js' %}"></script>
 
 </body>
 

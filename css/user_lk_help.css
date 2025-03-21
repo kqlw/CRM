@@ -1,11 +1,13 @@
-.help
+#page_help
 {
-    /* display: none; */
+    display: none;
 }
 
 
 .inputTextArea
 {
+    
+
     width: 650px;
     height: 200px;
     border: 1px solid black;

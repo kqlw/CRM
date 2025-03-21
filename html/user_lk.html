@@ -1,12 +1,14 @@
+{% load static %}
+
 <html>
 <head>
     <title>Личный кабинет</title>
-    <link rel="stylesheet" href="C:\Users\я\Desktop\Учёба\2024\зимняя сессия\web\css\user_lk_basicInformation.css">
-    <link rel="stylesheet" href="C:\Users\я\Desktop\Учёба\2024\зимняя сессия\web\css\user_lk_finance.css">
-    
-    <link rel="stylesheet" href="C:\Users\я\Desktop\Учёба\2024\зимняя сессия\web\css\user_lk_help.css">
+    <link rel="stylesheet" href="{% static 'user_lk_basicInformation.css' %}">
+    <link rel="stylesheet" href="{% static 'user_lk_finance.css' %}">
+    <link rel="stylesheet" href="{% static 'user_lk_help.css' %}">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
 
-    <link rel="stylesheet" href="C:\Users\я\Desktop\Учёба\2024\зимняя сессия\web\css\main.css">
+    
 
 
 </head>
@@ -15,21 +17,21 @@
     <div class="header">
 
         <div class="header_navigation">
-            <input type="radio" name="navigation" class="header_navigation_btn">Основная информация</input >
-            <input type="radio" name="navigation" class="header_navigation_btn">Финансы</input >
-            <input type="radio" name="navigation" class="header_navigation_btn">Помощь</input >
+            <button class="header_navigation_btn" id="header_btn_basicInf">Основная информация</button >
+            <button class="header_navigation_btn" id="header_btn_finance">Финансы</button >
+            <button class="header_navigation_btn" id="header_btn_help">Помощь</button >
         </div>
 
-        <button class="header_exit">Выйти</button>
+        <button class="header_exit" id="header_exit_btn">Выйти</button>
 
     </div>
 
 
 
-    <div class="basicInformation">
+    <div class="pages" id="page_basicInformation">
 
         <div class="container_phoneNumber" >
-            <div class="phoneNumber">Номер телефона: +79008881441</div>
+            <div class="phoneNumber">Номер телефона: {{phoneNumber}}</div>
             <div class="status"></div>
         </div>
 
@@ -40,10 +42,10 @@
                 <div class="information_block">
                     <div class="header_txt">ФИО</div>
 
-                    <div class="txt">Фамилия: Паевский</div>
-                    <div class="txt">Имя: Андрей</div>
-                    <div class="txt">Отчество: Паевский</div>
-                    <div class="txt">Дата рождения: 14.03.2003</div>
+                    <div class="txt">Фамилия: {{surname}}</div>
+                    <div class="txt">Имя: {{name}}</div>
+                    <div class="txt">Отчество: {{patronymic}}</div>
+                    <div class="txt">Дата рождения: {{birthday}}</div>
 
 
                     
@@ -52,8 +54,8 @@
                 
                 <div class="information_block">
                     <div class="header_txt">Паспорт</div>
-                    <div class="txt">Серия: 5514</div>
-                    <div class="txt">Номер: 748371</div>
+                    <div class="txt">Серия: {{passportSeries}}</div>
+                    <div class="txt">Номер: {{passportNumber}}</div>
                 </div>
 
             </div>
@@ -64,7 +66,7 @@
 
         <div class="container_inforamation">
             <div class="inforamation_header">Тариф:  
-                <button id="rate_name" >Мой онлайн</button>
+                <button id="rate_name" >{{tariff_name}}</button>
                 <div class="status" id="rate_status"></div>
             </div>
             
@@ -73,11 +75,11 @@
                 <div class="information_block">                
                     <div class="header_txt">Праметры тарифа</div>
 
-                    <div class="txt">Минуты: т2 безлимит, 600 по РФ</div>
-                    <div class="txt">SMS: 20</div>
-                    <div class="txt">Интернет: 30 Гб</div>
+                    <div class="txt">Минуты: {{tariff_minutes}} мин.</div>
+                    <div class="txt">SMS: {{tariff_sms}}</div>
+                    <div class="txt">Интернет: {{tariff_internet}} Гб</div>
 
-                    <div class="txt txt_bold">Стоимость: 600р</div>
+                    <div class="txt txt_bold">Стоимость: {{tariff_cost}}</div>
     
                 </div>
         
@@ -88,7 +90,7 @@
                     <div class="txt">SMS: 20</div>
                     <div class="txt">Интернет: 30 Гб</div>
 
-                    <div class="txt txt_bold">Баланс: 250р</div>
+                    <div class="txt txt_bold">Баланс: {{balance}}р</div>
                     <button class="btn_TopUpBalance" >Пополнить</button>
                 </div>
             </div>
@@ -104,32 +106,30 @@
             <th class="table_head">Стоимость</th>
         </tr>
 
+
+        {% for ts in tariffServices %}
         <tr>
             <td><button class="status"></button></td>
-            <td>Телефония</td>
-            <td>0р</td>
+            <td>{{ts.services.name}}</td>
+            <td>{{ts.services.cost}}</td>
         </tr>
-
-        <tr>
-            <td class="table_cell"><button class="status"></button></td>
-            <td>SMS</td>
-            <td>0р</td>
-        </tr>
-
-        <tr>
-            <td><button class="status"></button></td>
-            <td>Траиф "Мой онлайн"</td>
-            <td>0р</td>
-        </tr>
-
+        {% endfor %} 
+        
     </table>    
-
+    
 
     </div>
 
 <!-- ================================ Финансы ================================ -->
 
-    <div class="finance">
+    <div class="pages" id="page_finance">
+
+        <div class="container_inforamation">
+
+
+            
+        </div>
+
         <div class="table_header">Детализация</div>
         <table class="table">
             <tr>
@@ -164,7 +164,7 @@
 
 <!-- ================================ Поддержка ================================ -->
 
-    <div class="help">  
+    <div class="pages" id="page_help">  
 
         <div class="container_inforamation">
             <div class="inforamation_header">Помощь</div>
@@ -181,21 +181,21 @@
                     <div class="header_txt">Как с вами связаться?</div>
                     
                     <div class="container_communicationMethod"> 
-                        <input type="radio" name="communicationMethod" class="inputArea">
+                        <input type="radio" name="communicationMethod" class="inputArea"  id="radio_communicationMethod_phone" checked>
                         <div class="txt">Звонок</div>
-                        <input type="text" class="inputArea">
+                        <input type="text" class="inputArea inputArea_txt" id="inputArea_communicationMethod_phone">
                     </div>
 
                     <div class="container_communicationMethod"> 
-                        <input type="radio" name="communicationMethod" class="inputArea">
+                        <input type="radio" name="communicationMethod" class="inputArea" id="radio_communicationMethod_sms">
                         <div class="txt">SMS</div>
-                        <input type="text" class="inputArea">
+                        <input type="text" class="inputArea inputArea_txt" id="inputArea_communicationMethod_sms" disabled>
                     </div>
 
                     <div class="container_communicationMethod"> 
-                        <input type="radio" name="communicationMethod" class="inputArea">
+                        <input type="radio" name="communicationMethod" class="inputArea" id="radio_communicationMethod_email">
                         <div class="txt">email</div>
-                        <input type="text" class="inputArea">
+                        <input type="text" class="inputArea inputArea_txt" id="inputArea_communicationMethod_email" disabled>
                     </div>
                     
                     <button class="btn_submitForm">Отправить</button>
@@ -242,6 +242,11 @@
         </table>
 
     </div>
+
+    
+    <script src="{% static 'change_page.js' %}"></script>
+    <script src="{% static 'selectCommunicationMethod.js' %}"></script>
+    <script src="{% static 'user_lk_exit.js' %}"></script>
 
 </body>
 

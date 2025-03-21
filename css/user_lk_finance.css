@@ -1,7 +1,6 @@
-.finance
+#page_finance
 {
-    /* display: none; */
-    margin-top: 50px;
+    display: none;
 }
 
 .column_date
