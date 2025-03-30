@@ -104,3 +104,67 @@ th
     border: 1px solid black;
 
 }
+
+
+/* поплнить баланс */
+
+
+.container_topUpBalance
+{
+    
+    padding-top: 200px;
+    position: absolute;
+    width: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.topUpBalance
+{
+    /* position: absolute; */
+
+    width: 350px;
+    height: 200px;
+    background-color: white;
+    border: 2px, solid black;
+    justify-content: space-around;
+    padding: 50px 50px;
+
+    /* display: flex; */
+    /* align-items: center; */
+}
+
+.topUpBalance_buttonContainer
+{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+.btn_windowTopUpBalance
+{
+
+    display: flex;
+    padding: 10px 20px;
+    /* margin: 10px; */
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+
+    border-radius: 5px;
+}
+
+.btn_windowTopUpBalance:hover
+{
+    cursor: pointer;
+}
+
+#btn_windowTopUpBalance_accept
+{
+    background-color: #6DD401;
+}
+
+#btn_windowTopUpBalance_cancel
+{
+    background-color: red;
+}

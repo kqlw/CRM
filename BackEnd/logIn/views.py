@@ -1,5 +1,10 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
+from django.db.models import Q
+from django.http import JsonResponse
+from decimal import Decimal
+from django.utils import timezone
+import json
 
 from logIn.models import(
     SubscriberPersonalData,
@@ -7,7 +12,8 @@ from logIn.models import(
     Services,
     TariffServices,
     phoneNumbers,
-    ActivateServices
+    ActivateServices,
+    FinanceHistory
 )
 # Create your views here.
 
@@ -62,7 +68,66 @@ def lk_page(request):
 
 
         return render(request, 'user_lk.html', context=data)
+    
 
+def getFinanceHistrory(request):
+    
+    if(request.method == "GET"):
+        
+        dateFrom = request.GET.get("dateFrom")
+        dateTo = request.GET.get("dateTo")
+
+        phoneNumber = request.GET.get('phoneNumber')
+
+        financeHistory = FinanceHistory.objects.filter(Q(phoneNumber = phoneNumber) & Q(date__range=[dateFrom, dateTo]))
+
+        data = [
+            {
+                "phone": phoneNumber,
+                "date" : el.date,
+                "name" : el.name,
+                "cost" : el.cost
+            }
+            for el in financeHistory
+        ]
+
+
+        return JsonResponse({"data": data})
+
+
+def topUpBalance(request):
+    if(request.method == "POST"):
+
+        postData = json.loads(request.body.decode('utf-8'))
+        
+        postPhoneNumber = postData.get("phoneNumber")
+
+        value = postData.get("value")
+        value = Decimal(str(value)).quantize(Decimal('0.00'))
+
+        findPhoneNumber = phoneNumbers.objects.get(phoneNumber=postPhoneNumber)
+
+        FinanceHistory.objects.create(
+            phoneNumber = findPhoneNumber,
+            date = timezone.now(),
+            name = "Пополнение баланса",
+            cost = value
+        )
+
+        findPhoneNumber.balance += value
+
+        findPhoneNumber.save()
+
+        data = {
+            "phone": postPhoneNumber,
+            "value" : findPhoneNumber.balance
+            }
+        
+        return JsonResponse({"data": data})
+
+        
+
+    
     
 
     

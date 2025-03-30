@@ -12,7 +12,7 @@
         <h2 class="UserAuthorization__txt">Введите номер телефона:</h2>
         <form action="" method="post">
             {% csrf_token %}
-            <input type="tel" id="phoneNumber" class="UserAuthorization__input" value="+7" maxlength="12" minlength="12" name="phoneNumber">
+            <input type="tel" id="phoneNumber" class="UserAuthorization__input" value="7" maxlength="11" minlength="11" name="phoneNumber">
             
             <h2 class="UserAuthorization__txt">Введите пароль из SMS:</h2>
             <input type="password" class="UserAuthorization__input" id="inputArea_password">

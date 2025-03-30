@@ -26,12 +26,31 @@
 
     </div>
 
+    <div class="container_topUpBalance" id="WindowTopUpBalance">
+        <div class="container_inforamation topUpBalance">
+            <div class="header_txt">Данные банковской карты</div>
+                    
+                <div class="txt">Номер карты: </div>
+                <input type="text" name="bankCard_number" id = "inputArea_bankCard_number" class="inputArea" minlength="16" maxlength="16">
+                
+                <div class="txt">Сумма: </div>
+                <input type="number" name="bankCard_Value" id = "inputArea_bankCard_Value" class="inputArea">
+
+                <div class="topUpBalance_buttonContainer">
+                    <button class="btn_windowTopUpBalance" id="btn_windowTopUpBalance_accept">Пополнить</button>
+                    <button class="btn_windowTopUpBalance" id="btn_windowTopUpBalance_cancel">Отменить</button>
+                </div>
+                    
+            </div>
+    </div>
+
+
 
 
     <div class="pages" id="page_basicInformation">
 
         <div class="container_phoneNumber" >
-            <div class="phoneNumber">Номер телефона: {{phoneNumber}}</div>
+            <div class="phoneNumber" id="phoneNumber">Номер телефона: {{phoneNumber}}</div>
             <div class="status"></div>
         </div>
 
@@ -45,7 +64,7 @@
                     <div class="txt">Фамилия: {{surname}}</div>
                     <div class="txt">Имя: {{name}}</div>
                     <div class="txt">Отчество: {{patronymic}}</div>
-                    <div class="txt">Дата рождения: {{birthday}}</div>
+                    <div class="txt">Дата рождения: {{birthday|date:"j F Y" }}</div>
 
 
                     
@@ -125,38 +144,51 @@
     <div class="pages" id="page_finance">
 
         <div class="container_inforamation">
+            <div class="inforamation_header">Финансы</div>
 
 
+            <div class="information">  
+                <div class="information_block">
+                    <div class="header_txt">Ифнормация о счёте</div>
+
+                    <div class="txt">Размер АП: {{tariff_cost}}р</div>
+
+                    <div class="txt">Дата предыдущего списания АП: 11.12.2025</div>
+                    <div class="txt">Дата следующего списания АП: 11.01.2025</div>
+
+                    <div class="txt txt_bold">Баланс: {{balance}}р</div>
+                </div>
+
+                <div class="information_block">
+                    
+                    <input type="hidden" name="form_id" value="getDetails">
+
+                    <div class="header_txt">Параметры детализации</div>
+                    
+                    <div class="txt">Дата начала: <input type="datetime-local" name="detailsDateFrom" id = "inputArea_detailsDateFrom" class="inputArea" ></div>
+                    <div class="txt">Дата конца: <input type="datetime-local" name="detailsDateTo" class="inputArea" id="inputArea_detailsDateTo"></div>
+                    
+                    <button class="btn_submitForm" id="btn_getDetalis">Заказать</button>
+                
+
+                </div>
+                
+            </div>
             
+            <div class="table_header">История</div>
+
+            <table class="table" id="table_financeHistory">
+                <tr>
+                    <th class="table_head">Дата</th>
+                    <th class="table_head">Услуга</th>
+                    <th class="table_head">Стоимость</th>
+                </tr>
+        
+         
+            </table>
         </div>
 
-        <div class="table_header">Детализация</div>
-        <table class="table">
-            <tr>
-                <th class="table_head">Дата</th>
-                <th class="table_head">Услуга</th>
-                <th class="table_head">Стоимость</th>
-            </tr>
-    
-            <tr>
-                <td>14.03.2025 04:21</td>
-                <td>Тариф "Мой онлайн"</td>
-                <td>600р</td>
-            </tr>
-    
-            <tr>
-                <td>12.03.2025</td>
-                <td>Доп. пакет 20Гб</td>
-                <td>400р</td>
-            </tr>
-
-            <tr>
-                <td>12.03.2025</td>
-                <td>Доп. пакет 20Гб</td>
-                <td>400р</td>
-            </tr>
-    
-        </table> 
+        
 
 
     </div>
@@ -244,9 +276,12 @@
     </div>
 
     
+    
     <script src="{% static 'change_page.js' %}"></script>
     <script src="{% static 'selectCommunicationMethod.js' %}"></script>
     <script src="{% static 'user_lk_exit.js' %}"></script>
+    <script src="{% static 'getDetails.js' %}"></script>
+    <script src="{% static 'topUpBalance.js' %}"></script>
 
 </body>
 
