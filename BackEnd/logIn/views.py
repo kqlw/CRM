@@ -4,6 +4,7 @@ from django.db.models import Q
 from django.http import JsonResponse
 from decimal import Decimal
 from django.utils import timezone
+from django.contrib.auth import logout
 import json
 
 from logIn.models import(
@@ -19,7 +20,10 @@ from logIn.models import(
 
 def first_page(request):
     if (request.method == 'POST'):
-        postPhoneNumber = request.POST.get("phoneNumber")
+
+        postData = json.loads(request.body.decode('utf-8'))
+        
+        postPhoneNumber = postData.get("phoneNumber")
 
         
         try:
@@ -69,6 +73,14 @@ def lk_page(request):
 
         return render(request, 'user_lk.html', context=data)
     
+def lk_exit(request):
+    if (request.method == "GET"):
+        request.session.flush()  # Очищает всю сессию
+        logout(request)
+        
+        data = request.session
+
+        return JsonResponse({"data": data})
 
 def getFinanceHistrory(request):
     

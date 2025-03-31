@@ -20,6 +20,8 @@ from logIn.views import first_page
 from logIn.views import lk_page
 from logIn.views import getFinanceHistrory
 from logIn.views import topUpBalance
+from logIn.views import lk_exit
+
 
 
 
@@ -28,6 +30,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', first_page),
     path('lk/', lk_page), 
+    path('lk/exit', lk_exit),
     path('lk/getDetalis/', getFinanceHistrory), 
     path('lk/topUpBalance', topUpBalance)
 
