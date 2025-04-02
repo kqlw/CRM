@@ -1,0 +1,243 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Личный кабинет</title>
+
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <link rel="stylesheet" href="{% static 'admin_lk.css' %}">
+    
+    
+    
+
+</head>
+
+<body>
+    <div class="header">
+
+        <div class="header_navigation">
+            <button class="header_navigation_btn" id="header_btn_basicInf">Заявки</button >
+        </div>
+
+        <button class="header_exit" id="header_exit_btn">Выйти</button>
+
+    </div>
+
+ 
+
+
+<!-- ================================ заявки ================================ -->
+
+    <div class="pages" id="page_basicInformation">
+
+        <div class="container_inforamation">
+            <div class="inforamation_header">Фильтр</div>
+
+
+            <div class="information">  
+                <div class="information_block">
+                    <div class="header_txt">Поиск</div>
+
+                    <div class="txt">Найти абонента по телефону:</div>
+                    <div>
+                        <input maxlength="11" minlength="11" type="text" name="userPhone" id = "inputArea_userPhone" class="inputArea" >
+                        <button class="btn_find" id="btn_findUser">Найти</button>
+
+                    </div>
+
+
+                    <div class="txt">Найти заявку по ID:</div>
+                    <div>
+                        <input type="text" name="detailsDateFrom" id = "inputArea_applicationID" class="inputArea" >
+                        <button class="btn_find" id="btn_findApplication">Найти</button>
+                    </div>
+                    
+                </div>
+
+                <div class="information_block">
+                    
+
+                    <div class="header_txt">Отфильтровать заявки</div>
+                    
+                    <div class="txt">Заявки от: <input type="datetime-local" name="detailsDateFrom" id = "inputArea_applicationDateFrom" class="inputArea" ></div>
+                    
+                    <div class="txt">Заявки до: <input type="datetime-local" name="detailsDateTo" class="inputArea"  id="inputArea_applicationDateTo"></div>
+                    
+                    <div class="txt"  >Статус: 
+                        <select name="applicationStatus" class="txt" id="inputArea_applicationStatus">
+                            <option value="all">Любой</option>
+                            <option value="close">Открыта</option>
+                            <option value="open">Закрыта</option>
+                        </select>
+                    </div>
+
+                    <button class="btn_filter" id="btn_filterApplication">Найти</button>
+                
+
+                </div>
+                
+            </div>
+            
+
+        </div>
+
+        <div class="table_header">Заявки абонентов</div>
+        <table class="table" id = "table_application">
+            <tr>
+                <th class="table_head">ID</th>
+                <th class="table_head">Дата начала</th>
+                <th class="table_head">Дата окончания</th>
+                <th class="table_head">Статус</th>
+            </tr>
+    
+    
+        </table>
+
+
+    </div>
+
+
+<div class="getData_container" id="getUser" hidden>
+    <div class="getData">
+        <div class="header_txt">Номер: 79008001010</div>
+        <div class="getData_item">     
+            <div class="txt">Фамилия</div>
+            <input type="text" class="getData_item_value" id="getData_surname">
+        </div>
+
+        <div class="getData_item"> 
+            <div class="txt">Имя</div>
+            <input type="text" class="getData_item_value" id="getData_name">
+        </div>
+
+        <div class="getData_item"> 
+            <div class="txt">Отчество</div>
+            <input type="text" class="getData_item_value" id="getData_patronymic">
+        </div>
+
+        <div class="getData_item"> 
+            <div class="txt">Дата рождения</div>
+            <input type="date" class="getData_item_value" id="getData_birthday">
+        </div>
+
+        <div class="getData_item"> 
+            <div class="txt">Серия паспорта</div>
+            <input type="text" class="getData_item_value" id="getData_passportSeries">
+        </div>
+
+        <div class="getData_item"> 
+            <div class="txt">Номер паспорта</div>
+            <input type="text" class="getData_item_value" id="getData_passportNumber">
+        </div>
+
+        <div class="getData_item"> 
+            <div class="txt">Тариф</div>
+            <select name="" class="getData_item_value" id="getData_tariff">
+                
+            </select>
+        </div>
+        
+
+        <div class="getData_buttons"> 
+            <button class="getData_btn getData_btn_save"  id="getUser_btn_save">Сохранить</button>
+            <button class="getData_btn getData_btn_cancel" id="getUser_btn_cancel">Отменить</button>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="getApplication_container" id="getApplication" hidden>
+    
+    <div class="getApplication">
+        <div class="getApplication_item">
+            <div class="header_txt" >ID заявки: 
+                <input disabled type="text" class="getApplication_item_value" id="application_ID" >
+            </div>
+        </div>
+
+        <div class="getApplication_item">     
+            <div class="txt" >Номер абонента: 
+                <input disabled type="text" class="getApplication_item_value" id="application_PhoneNumber">
+            </div>
+        </div>
+
+
+        <div class="getApplication_item_inline"> 
+            <div class="txt">Статус</div>
+            <select class="getApplication_item_value" id="application_status">
+                <option value="open">Открыта</option>
+                <option value="close">Закрыта</option>
+            </select>
+        </div>
+
+        <div class="getApplication_item_inline"> 
+            <div class="txt">Дата открытия</div>
+            <input disabled type="datetime" class="getApplication_item_value" id="application_dateStart">
+        </div>
+
+        <div class="getApplication_item_inline"> 
+            <div class="txt">Дата закрытия</div>
+            <input disabled type="datetime" class="getApplication_item_value" id="application_dateEnd">
+        </div>
+
+        <div class="getApplication_item">     
+            <div class="txt" >Способ связи: 
+                <input disabled type="text" class="getApplication_item_value" id="application_communicationMethod">
+
+            </div>
+            
+        </div>
+
+        <div class="getApplication_item">     
+            <div class="txt" >Контакт: 
+                <input disabled type="text" class="getApplication_item_value" id="application_contact">
+            </div>
+        </div>
+
+        <div class="getApplication_item"> 
+            <div class="txt">Вопрос абоенета</div>
+            <textarea disabled class="getData_textArea" id="application_question"></textarea>
+        </div>
+
+        <div class="getApplication_item"> 
+            <div class="txt">Ответ на вопрос абоенета</div>
+            <textarea class="getData_textArea" id="application_answer"></textarea>
+        </div>
+
+                  
+        <div class="getApplication_buttons"> 
+            <button class="getApplication_btn getApplication_btnSave" id="getApplication_btnSave">Сохранить</button>
+            <button class="getApplication_btn getApplication_btnCancel" id="getApplication_btnCancel">Отменить</button>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+<!-- ================================ Поддержка ================================ -->
+
+
+
+    
+    
+    <!-- <script src="{% static 'change_page.js' %}"></script> -->
+    <script src="{% static 'user_lk_exit.js' %}"></script>
+    <script src="{% static 'filterApplication.js' %}"></script>
+    <script src="{% static 'admin_getUser.js' %}"></script>
+    <script src="{% static 'admin_getApplication.js' %}"></script>
+
+     
+
+</body>
+
+</html>

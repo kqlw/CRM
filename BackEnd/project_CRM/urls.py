@@ -21,17 +21,27 @@ from logIn.views import lk_page
 from logIn.views import getFinanceHistrory
 from logIn.views import topUpBalance
 from logIn.views import lk_exit
+from logIn.views import admin_lk
+from logIn.views import admin_filterApplication
+from logIn.views import admin_findUser
+from logIn.views import application
+
 
 
 
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('mainAdmin/', admin.site.urls),
     path('', first_page),
     path('lk/', lk_page), 
     path('lk/exit', lk_exit),
     path('lk/getDetalis/', getFinanceHistrory), 
-    path('lk/topUpBalance', topUpBalance)
+    path('lk/topUpBalance', topUpBalance),
+    path('admin/lk', admin_lk),
+    path('admin/lk/application_filter', admin_filterApplication),
+    path('admin/lk/find_user', admin_findUser),
+    path('application', application)
+
 
 ]

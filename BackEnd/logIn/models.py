@@ -78,3 +78,27 @@ class FinanceHistory(models.Model):
     name = models.CharField(max_length=50)
 
     cost = models.DecimalField(max_digits=10, decimal_places=2)
+
+
+
+class Application(models.Model):
+    def __str__(self):
+        return f"{self.id}" 
+    
+
+
+    phoneNumber = models.ForeignKey(phoneNumbers, on_delete = models.SET_NULL, null=True)
+    
+    dateStart = models.DateTimeField()
+    dateEnd = models.DateTimeField()
+    
+    communicationMethod = models.CharField(max_length=30)
+    contact = models.CharField(max_length=30)
+    
+    question = models.TextField()
+    answer = models.TextField()
+
+    status = models.CharField(max_length=20)
+
+
+
