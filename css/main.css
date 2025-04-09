@@ -15,6 +15,13 @@
     margin: 0 10px;
 }
 
+.applicationsTable_data:hover
+{
+    cursor: pointer;
+    background-color: whitesmoke;
+}
+
+
 /* ================ Шапка ================= */
 
 .header

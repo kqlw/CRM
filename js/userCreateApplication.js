@@ -1,4 +1,4 @@
-function applicationAddEventOnClick() 
+function applicationAddEventOnClick(applicationsTable_data) 
 {
     Array.from(applicationsTable_data).forEach(el => {
         
@@ -13,7 +13,7 @@ function applicationAddEventOnClick()
             let application_dateEnd = document.getElementById("application_dateEnd")
             let application_communicationMethod = document.getElementById("application_communicationMethod")
             let application_contact = document.getElementById("application_contact")
-            let application_question = document.getElementById("application_question")
+            let application_question = document.getElementById("form_application_question")
             let application_answer = document.getElementById("application_answer")
 
 
@@ -23,6 +23,9 @@ function applicationAddEventOnClick()
             fetch(url).then(r => {
                 return r.json()
             }).then(answer => {
+
+                console.log(answer);
+                
                 getApplication.hidden = false
                 console.log(answer);
                 let getData = answer.data
@@ -39,49 +42,96 @@ function applicationAddEventOnClick()
                 application_contact.value = getData.contact
                 
                 application_question.value = getData.question
-                application_answer.value = getData.answer
+                if(getData.status == "open")
+                {
+                    application_answer.hidden = true    
+                }
+                else
+                {
+                    application_answer.hidden = false    
+                    application_answer.value = getData.answer
+                }            
             })
         }
         
     });
 }
 
-let inputArea_applicationDateFrom = document.getElementById("inputArea_applicationDateFrom")
 
-let inputArea_applicationDateTo = document.getElementById("inputArea_applicationDateTo")
+let hidden_PhoneNumber = document.getElementById("hidden_PhoneNumber")
+let btn_CrateApplication = document.getElementById("btn_CrateApplication")
 
-let inputArea_applicationStatus = document.getElementById("inputArea_applicationStatus")
 
-let btn_filterApplication = document.getElementById("btn_filterApplication")
+let communicationMethod = document.getElementsByName("communicationMethod")
+let application_question = document.getElementById("application_question")
 
 let table_application = document.getElementById("table_application")
 
-function dateFormatter(d)
+btn_CrateApplication.onclick = function()
 {
-    const date = new Date(d);
+    let url = "http://127.0.0.1:8000/application/create"
 
-    const options = {
-    day: 'numeric',       // день числами (12)
-    month: 'long',        // месяц полностью (марта)
-    year: 'numeric',      // год (2025)
-    hour: '2-digit',      // часы (06)
-    minute: '2-digit',    // минуты (00)
-    timeZone: 'UTC'       // указываем UTC,
+    const csrftoken = getCookie('csrftoken');
+
+    let contact
+    let selectedCommunicationMethod
+
+
+
+    console.log(communicationMethod);
+    
+    
+    communicationMethod.forEach(el => {
+        if(el.checked)
+        {
+            if(el.id == "radio_communicationMethod_phone")
+            {   
+                contact = document.getElementById("inputArea_communicationMethod_phone").value 
+                selectedCommunicationMethod= "Телефон"
+            }
+            else if(el.id == "radio_communicationMethod_sms")
+            {
+                contact = document.getElementById("inputArea_communicationMethod_sms").value 
+                selectedCommunicationMethod= "SMS"
+            }
+            else if(el.id == "radio_communicationMethod_email")
+            {
+                contact = document.getElementById("inputArea_communicationMethod_email").value 
+                selectedCommunicationMethod= "email"
+            }
+        }
+        
+        
+    })
+
+    console.log(selectedCommunicationMethod, contact);
+
+    let data = 
+    {
+        phoneNumber: hidden_PhoneNumber.value,
+        question: application_question.value,
+        communicationMethod: selectedCommunicationMethod,
+        contact: contact
     }
     
-    const formatter = new Intl.DateTimeFormat('ru-RU', options);
-
-    return formatter.format(date)
-};
-
-
-btn_filterApplication.onclick = function()
-{
-    url = `http://127.0.0.1:8000/admin/lk/application_filter?dateFrom=${inputArea_applicationDateFrom.value}&dateTo=${inputArea_applicationDateTo.value}&status=${inputArea_applicationStatus.value}`
-
     
-    fetch(url, {}).then(response => {
-        return response.json()
+    
+    fetch(url, {
+        method: 'POST',
+        headers: 
+        {
+            'Content-Type': 'application/json;charset=utf-8',
+            'X-CSRFToken': csrftoken
+        },
+
+        body: JSON.stringify(data)
+
+    }).then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+
     }).then(responseData => {
         table_application.innerHTML = `
         <table class="table" id = "table_application">
@@ -110,11 +160,12 @@ btn_filterApplication.onclick = function()
                 <td>${applicationStatus}</td>
 
             </tr>
-            `            
-        });
+            ` 
+        })
 
-        applicationAddEventOnClick()
-    })
-
-
+        applicationAddEventOnClick(table_application)
+    }) 
 }
+
+
+       

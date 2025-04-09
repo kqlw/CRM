@@ -10,6 +10,8 @@ let page_basicInformation = document.getElementById("page_basicInformation");
 let page_finance = document.getElementById("page_finance");
 let page_help = document.getElementById("page_help");
 
+header_btn_basicInf.style.color = "#0F97FF"
+
 
 function header_btn_click(page)
 {
@@ -18,13 +20,35 @@ function header_btn_click(page)
     });
 
     page.style.display = "block"
+    
 }
 
 
 
-header_btn_help.onclick = function() {header_btn_click(page_help)}
-header_btn_finance.onclick = function() {header_btn_click(page_finance)}
-header_btn_basicInf.onclick = function() {header_btn_click(page_basicInformation)}
+header_btn_help.onclick = function() 
+{
+    header_btn_click(page_help)
+    header_btn_help.style.color = "#0F97FF"
+    header_btn_finance.style.color = "black"
+    header_btn_basicInf.style.color = "black"
+
+}
+header_btn_finance.onclick = function()
+{
+    header_btn_click(page_finance)
+    header_btn_help.style.color = "black"
+    header_btn_finance.style.color = "#0F97FF"
+    header_btn_basicInf.style.color = "black"
+
+}
+header_btn_basicInf.onclick = function() 
+{
+    header_btn_click(page_basicInformation)
+    header_btn_help.style.color = "black"
+    header_btn_finance.style.color = "black"
+    header_btn_basicInf.style.color = "#0F97FF"
+}
+
 
 
 

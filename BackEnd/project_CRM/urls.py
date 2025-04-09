@@ -25,6 +25,7 @@ from logIn.views import admin_lk
 from logIn.views import admin_filterApplication
 from logIn.views import admin_findUser
 from logIn.views import application
+from logIn.views import createApplication
 
 
 
@@ -41,7 +42,8 @@ urlpatterns = [
     path('admin/lk', admin_lk),
     path('admin/lk/application_filter', admin_filterApplication),
     path('admin/lk/find_user', admin_findUser),
-    path('application', application)
+    path('application', application),
+    path('application/create', createApplication)
 
 
 ]

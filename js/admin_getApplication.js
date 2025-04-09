@@ -15,7 +15,10 @@ function dateFormatter(d)
 
     return formatter.format(date)
 };
+// -----------------------------
 
+let applicationsTable_data = document.getElementsByClassName("applicationsTable_data")
+// -----------------------------
 let getApplication = document.getElementById("getApplication")
 
 let getApplication_btnSave = document.getElementById("getApplication_btnSave")
@@ -113,3 +116,11 @@ getApplication_btnCancel.onclick = function()
 {
     getApplication.hidden = true
 }
+
+
+
+// -------------------------
+
+
+
+

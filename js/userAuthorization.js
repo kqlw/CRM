@@ -56,12 +56,15 @@ btn_authorization.onclick = function()
             if (response.ok)
             {
                 window.location.href = "http://127.0.0.1:8000/lk"
+
+                console.log(response);
+                
             }
         })
         
     }
     else
     {
-        alert("Неврно введён номер телефона(+7XXXXXXXXXX) или пароль!")
+        alert("Неврно введён номер телефона(7XXXXXXXXXX) или пароль!")
     }
 }

@@ -5,6 +5,8 @@ from django.http import JsonResponse
 from decimal import Decimal
 from django.utils import timezone
 from django.contrib.auth import logout
+from datetime import timedelta
+
 import json
 
 from logIn.models import(
@@ -50,6 +52,7 @@ def lk_page(request):
 
         findPhoneNumber = phoneNumbers.objects.get(phoneNumber=postPhoneNumber)
         tariffServices = TariffServices.objects.filter(tariff = findPhoneNumber.idTariff.id)
+        application = Application.objects.filter(Q(phoneNumber=findPhoneNumber))
 
         data = {
             "phoneNumber": findPhoneNumber.phoneNumber,
@@ -67,8 +70,10 @@ def lk_page(request):
             "tariff_cost" : findPhoneNumber.idTariff.cost,
 
             "balance":findPhoneNumber.balance,
-            "tariffServices":tariffServices
-            
+            "tariffServices":tariffServices,
+
+            "application" : application
+
         }
 
 
@@ -301,3 +306,44 @@ def application(request):
 
         application.save()
         return JsonResponse({'status': "sucsess"})
+
+
+def createApplication(request):
+    if(request.method == "POST"):
+
+        postData = json.loads(request.body.decode('utf-8'))
+        
+        postPhoneNumber = postData.get("phoneNumber")
+        question = postData.get("question")
+        communicationMethod = postData.get("communicationMethod")
+        contact = postData.get("contact")
+
+        findPhoneNumber = phoneNumbers.objects.get(phoneNumber=postPhoneNumber)
+
+        Application.objects.create(
+            phoneNumber = findPhoneNumber,
+            dateStart = timezone.now(),
+            dateEnd = timezone.now() + timedelta(days=5),
+            
+            communicationMethod = communicationMethod,
+            contact = contact,
+            
+            question = question,
+            answer = "-",
+
+            status = "open"
+        )
+        
+        applications = Application.objects.filter(Q(phoneNumber=postPhoneNumber))
+
+        data = [
+            {
+                "id" : el.id,
+                "dateStart": el.dateStart,
+                "dateEnd": el.dateEnd,
+                "status":el.status
+            }
+            for el in applications
+        ]
+        
+        return JsonResponse({"data": data})

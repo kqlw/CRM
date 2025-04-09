@@ -26,6 +26,11 @@
 
     </div>
 
+
+    <input hidden type="text" id="hidden_PhoneNumber" value="{{phoneNumber}}">
+
+
+
     <div class="container_topUpBalance" id="WindowTopUpBalance">
         <div class="container_inforamation topUpBalance">
             <div class="header_txt">Данные банковской карты</div>
@@ -205,7 +210,7 @@
                 <div class="information_block">
                     <div class="header_txt">Опишите свою проблему</div>
                     
-                    <textarea name="" class="inputTextArea"></textarea>
+                    <textarea name="" class="inputTextArea" id="application_question"></textarea>
                
                 </div>
                 
@@ -230,7 +235,7 @@
                         <input type="text" class="inputArea inputArea_txt" id="inputArea_communicationMethod_email" disabled>
                     </div>
                     
-                    <button class="btn_submitForm">Отправить</button>
+                    <button class="btn_submitForm" id="btn_CrateApplication">Отправить</button>
                 </div>
 
             </div>
@@ -240,49 +245,116 @@
 
 
         <div class="table_header">Мои заявки</div>
-        <table class="table">
+        <table class="table" id = "table_application">
             <tr>
                 <th class="table_head">ID</th>
                 <th class="table_head">Дата начала</th>
                 <th class="table_head">Дата окончания</th>
                 <th class="table_head">Статус</th>
             </tr>
-    
-            <tr>
-                <td>ТТ465123</td>
-                <td>14.03.2025 04:21</td>
-                <td>16.03.2025 04:21</td>
-                <td>В работе</td>
+                
 
+            {% for el in application %}
+            <tr class="applicationsTable_data"> 
+                <td>{{el.id}}</td>
+                <td>{{el.dateStart}}</td>
+                <td>{{el.dateEnd}}</td>
+
+                {% if el.status == "open" %}
+                    <td>Открыта</td>
+                {% else %}
+                    <td>Закрыта</td>
+                {% endif %}
             </tr>
-
-            <tr>
-                <td>ТТ465123</td>
-                <td>14.03.2025 04:21</td>
-                <td>16.03.2025 04:21</td>
-                <td>В работе</td>
-
-            </tr>
-            <tr>
-                <td>ТТ465123</td>
-                <td>14.03.2025 04:21</td>
-                <td>16.03.2025 04:21</td>
-                <td>В работе</td>
-
-            </tr>
-    
+            {% endfor %} 
         </table>
+
+        
 
     </div>
 
     
+
+    <div class="getApplication_container" id="getApplication" hidden>
+    
+        <div class="getApplication">
+            <div class="getApplication_item">
+                <div class="header_txt" >ID заявки: 
+                    <input disabled type="text" class="getApplication_item_value" id="application_ID" >
+                </div>
+            </div>
+    
+            <div class="getApplication_item">     
+                <div class="txt" >Номер абонента: 
+                    <input disabled type="text" class="getApplication_item_value" id="application_PhoneNumber">
+                </div>
+            </div>
+    
+    
+            <div class="getApplication_item_inline"> 
+                <div class="txt">Статус</div>
+                <select disabled class="getApplication_item_value" id="application_status">
+                    <option value="open">Открыта</option>
+                    <option value="close">Закрыта</option>
+                </select>
+            </div>
+    
+            <div class="getApplication_item_inline"> 
+                <div class="txt">Дата открытия</div>
+                <input disabled type="datetime" class="getApplication_item_value" id="application_dateStart">
+            </div>
+    
+            <div class="getApplication_item_inline"> 
+                <div class="txt">Дата закрытия</div>
+                <input disabled type="datetime" class="getApplication_item_value" id="application_dateEnd">
+            </div>
+    
+            <div class="getApplication_item">     
+                <div class="txt" >Способ связи: 
+                    <input disabled type="text" class="getApplication_item_value" id="application_communicationMethod">
+    
+                </div>
+                
+            </div>
+    
+            <div class="getApplication_item">     
+                <div class="txt" >Контакт: 
+                    <input disabled type="text" class="getApplication_item_value" id="application_contact">
+                </div>
+            </div>
+    
+            <div class="getApplication_item"> 
+                <div class="txt">Ваш вопрос</div>
+                <textarea disabled class="getData_textArea" id="form_application_question"></textarea>
+            </div>
+    
+            <div class="getApplication_item"> 
+                <div class="txt">Ответ на вопрос </div>
+                <textarea class="getData_textArea" id="application_answer" disabled></textarea>
+            </div>
+    
+                      
+            <div class="getApplication_buttons"> 
+                <button class="getApplication_btn getApplication_btnCancel" id="getApplication_btnCancel">Закрыть</button>
+            </div>
+        </div>
+    
+    
+    </div>
+
+
+
     
     <script src="{% static 'change_page.js' %}"></script>
     <script src="{% static 'selectCommunicationMethod.js' %}"></script>
     <script src="{% static 'user_lk_exit.js' %}"></script>
     <script src="{% static 'getDetails.js' %}"></script>
     <script src="{% static 'topUpBalance.js' %}"></script>
+    <script src="{% static 'userCreateApplication.js' %}"></script>
 
+    <script src="{% static 'loadUserLk.js' %}"></script>
+
+    
 </body>
 
 </html>
