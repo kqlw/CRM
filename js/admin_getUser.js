@@ -29,6 +29,7 @@ let btn_findUser = document.getElementById("btn_findUser")
 
 // ===================
 
+let getData_isActive = document.getElementById("getData_isActive")
 let getData_surname = document.getElementById("getData_surname")
 let getData_name = document.getElementById("getData_name")
 let getData_patronymic = document.getElementById("getData_patronymic")
@@ -57,6 +58,26 @@ btn_findUser.onclick = function()
         console.log(responseData);
         getUser.hidden = false
         
+        if(responseData.data.isActive == true)
+        {
+            getData_isActive.innerHTML = 
+            `
+            <option value="${responseData.data.isActive}">Активна</option>
+            <option value="False">Заблокирована</option>
+
+            `
+        }
+        else
+        {
+            getData_isActive.innerHTML = 
+            `
+            <option value="${responseData.data.isActive}">Заблокирована</option>
+            <option value="True">Активна</option>
+
+            `
+        }
+
+
         getData_surname.value = responseData.data.surname
         getData_name.value = responseData.data.name
         getData_patronymic.value = responseData.data.patronymic
@@ -89,6 +110,7 @@ getUser_btn_save.onclick = function()
 
     data = {
         "phoneNumber": inputArea_userPhone.value,
+        "isActive": getData_isActive.value,
         "surname": getData_surname.value,
         "name": getData_name.value,
         "patronymic": getData_patronymic.value,

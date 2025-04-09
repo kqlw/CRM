@@ -23,6 +23,8 @@ class Tariff(models.Model):
     def __str__(self):
         return self.name
     
+    isArchived = models.BooleanField(default=False)
+
     name = models.CharField(max_length=30)
     cost = models.DecimalField(max_digits=10, decimal_places=2)
 
@@ -55,6 +57,8 @@ class phoneNumbers(models.Model):
         max_length=11, 
         primary_key=True
     )
+
+    isActive = models.BooleanField(default=True)
 
     idSubscriber = models.ForeignKey(SubscriberPersonalData, on_delete = models.SET_NULL, null=True)
     idTariff  = models.ForeignKey(Tariff, on_delete = models.PROTECT)

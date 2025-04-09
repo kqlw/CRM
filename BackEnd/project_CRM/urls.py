@@ -45,5 +45,4 @@ urlpatterns = [
     path('application', application),
     path('application/create', createApplication)
 
-
 ]

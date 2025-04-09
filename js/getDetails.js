@@ -3,7 +3,7 @@ let btn_getDetalis = document.getElementById("btn_getDetalis")
 
 let inputArea_detailsDateFrom = document.getElementById("inputArea_detailsDateFrom")
 let inputArea_detailsDateTo = document.getElementById("inputArea_detailsDateTo")
-// let phoneNumber = document.getElementById("phoneNumber")
+let phoneNumber = document.getElementById("hidden_PhoneNumber")
 
 let table_financeHistory = document.getElementById("table_financeHistory")
 
@@ -41,8 +41,8 @@ btn_getDetalis.onclick = function()
                 </tr>
                 `
 
-    let phoneNumber = "79008001010"
-    url = `getDetalis/?phoneNumber=${phoneNumber}&dateFrom=${inputArea_detailsDateFrom.value}&dateTo=${inputArea_detailsDateTo.value}`
+    
+    url = `getDetalis/?phoneNumber=${phoneNumber.value}&dateFrom=${inputArea_detailsDateFrom.value}&dateTo=${inputArea_detailsDateTo.value}`
     
 
     fetch(url)

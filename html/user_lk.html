@@ -56,7 +56,13 @@
 
         <div class="container_phoneNumber" >
             <div class="phoneNumber" id="phoneNumber">Номер телефона: {{phoneNumber}}</div>
-            <div class="status"></div>
+
+            {% if isActive == True %}
+                <div class="status status_active"></div>
+            {% else %}
+                <div class="status status_blocked"></div>
+            {% endif %}
+            
         </div>
 
         <div class="container_inforamation">

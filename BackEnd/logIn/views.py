@@ -56,6 +56,7 @@ def lk_page(request):
 
         data = {
             "phoneNumber": findPhoneNumber.phoneNumber,
+            "isActive" : findPhoneNumber.isActive,
             "surname": findPhoneNumber.idSubscriber.surname,
             "name": findPhoneNumber.idSubscriber.name,
             "patronymic": findPhoneNumber.idSubscriber.patronymic,
@@ -78,7 +79,10 @@ def lk_page(request):
 
 
         return render(request, 'user_lk.html', context=data)
-    
+
+
+
+
 def lk_exit(request):
     if (request.method == "GET"):
         request.session.flush()  # Очищает всю сессию
@@ -208,6 +212,7 @@ def admin_findUser(request):
 
         data = {
             "phoneNumber": findPhoneNumber.phoneNumber,
+            "isActive" : findPhoneNumber.isActive,
             "surname": findPhoneNumber.idSubscriber.surname,
             "name": findPhoneNumber.idSubscriber.name,
             "patronymic": findPhoneNumber.idSubscriber.patronymic,
@@ -226,6 +231,9 @@ def admin_findUser(request):
         postData = json.loads(request.body.decode('utf-8'))
 
         postPhoneNumber = postData.get("phoneNumber")
+        isActive = postData.get("isActive")
+
+
         surname = postData.get("surname")
         name = postData.get("name")
         patronymic = postData.get("patronymic")
@@ -240,6 +248,10 @@ def admin_findUser(request):
 
         phoneNumber = phoneNumbers.objects.get(phoneNumber=postPhoneNumber)
 
+        phoneNumber.isActive = isActive
+        
+        phoneNumber.idTariff = findTariff
+        
         subscriber =  phoneNumber.idSubscriber
         
         subscriber.surname = surname
@@ -251,7 +263,6 @@ def admin_findUser(request):
         subscriber.passportSeries = passportSeries
         subscriber.passportNumber = passportNumber
 
-        phoneNumber.idTariff = findTariff
 
         subscriber.save()
         phoneNumber.save()
