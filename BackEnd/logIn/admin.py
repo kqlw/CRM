@@ -7,7 +7,8 @@ from logIn.models import(
     phoneNumbers,
     ActivateServices,
     FinanceHistory,
-    Application
+    Application,
+    Admins
 )
 
 
@@ -21,5 +22,6 @@ admin.site.register(phoneNumbers)
 admin.site.register(ActivateServices)
 admin.site.register(FinanceHistory)
 admin.site.register(Application)
+admin.site.register(Admins)
 
 

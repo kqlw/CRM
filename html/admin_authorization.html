@@ -1,0 +1,37 @@
+{% load static %}
+<html>
+<head>
+    <title>Вход</title>
+    <link rel="stylesheet" href="{% static 'user_authorization.css' %}">
+</head>
+
+<body>
+    
+    <div class="UserAuthorization">
+        
+        <h2 class="UserAuthorization__txt">Введите логин:</h2>
+        <!-- <form action="" method="post"> -->
+            {% csrf_token %}
+            <input type="tel" id="login" class="UserAuthorization__input" >
+            
+            <h2 class="UserAuthorization__txt">Введите пароль:</h2>
+            <input type="password" class="UserAuthorization__input" id="inputArea_password">
+            
+            <div class="UserAuthorization__bottomConatiner">
+                <button class="UserAuthorization__GetPassword" id="btn_GetPassword">Запросить пароль</button>
+                <button class="UserAuthorization__btn" id="btn_authorization">войти</button>
+            </div>
+            
+        <!-- </form> -->
+        
+
+    </div>
+
+
+    
+    <script src="{% static 'adminAuthorization.js' %}"></script>
+
+</body>
+
+</html>
+

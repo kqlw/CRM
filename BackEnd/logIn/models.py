@@ -104,5 +104,12 @@ class Application(models.Model):
 
     status = models.CharField(max_length=20)
 
+class Admins(models.Model):
 
+    def __str__(self):
+        return self.login
+    
+
+    login = models.CharField(max_length=30, primary_key=True)
+    password = models.CharField(max_length=30)
 

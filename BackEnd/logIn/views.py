@@ -17,7 +17,8 @@ from logIn.models import(
     phoneNumbers,
     ActivateServices,
     FinanceHistory,
-    Application
+    Application,
+    Admins
 )
 # Create your views here.
 
@@ -81,6 +82,23 @@ def lk_page(request):
         return render(request, 'user_lk.html', context=data)
 
 
+def admin_authorization_page(request):
+    return render(request, 'admin_authorization.html')
+
+def admin_authorization(request):
+    if (request.method == "POST"):
+        postData = json.loads(request.body.decode('utf-8'))
+        
+        login = postData.get("login")
+        password = postData.get("password")
+
+        findAdmin = Admins.objects.get(Q(login=login))        
+        if (findAdmin.password == password):
+            request.session['admin_login_isSucsess'] = True
+            return redirect('admin/lk')
+        else:
+            return JsonResponse({"message": "Ошибка!"})
+    
 
 
 def lk_exit(request):
@@ -153,7 +171,8 @@ def topUpBalance(request):
     
 
 def admin_lk(request):
-    return render(request, 'admin_lk.html')
+    if (request.session.get('admin_login_isSucsess')):
+        return render(request, 'admin_lk.html')
     
     
 

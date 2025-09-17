@@ -26,6 +26,9 @@ from logIn.views import admin_filterApplication
 from logIn.views import admin_findUser
 from logIn.views import application
 from logIn.views import createApplication
+from logIn.views import admin_authorization_page
+from logIn.views import admin_authorization
+
 
 
 
@@ -39,6 +42,8 @@ urlpatterns = [
     path('lk/exit', lk_exit),
     path('lk/getDetalis/', getFinanceHistrory), 
     path('lk/topUpBalance', topUpBalance),
+    path("admin", admin_authorization_page),
+    path('admin_authorization',admin_authorization),
     path('admin/lk', admin_lk),
     path('admin/lk/application_filter', admin_filterApplication),
     path('admin/lk/find_user', admin_findUser),

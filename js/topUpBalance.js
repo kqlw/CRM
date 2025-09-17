@@ -9,6 +9,7 @@ let btn_windowTopUpBalance_cancel = document.getElementById("btn_windowTopUpBala
 let inputArea_bankCard_number = document.getElementById("inputArea_bankCard_number")
 let inputArea_bankCard_Value = document.getElementById("inputArea_bankCard_Value")
 
+let phoneNumber = document.getElementById("hidden_PhoneNumber")
 
 
 
@@ -68,7 +69,7 @@ btn_windowTopUpBalance_accept.onclick = function()
 
     let data = 
     {
-        phoneNumber: "79008001010",
+        phoneNumber: phoneNumber.value,
         value: inputArea_bankCard_Value.value
     }
 
